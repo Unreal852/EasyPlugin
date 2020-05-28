@@ -1,29 +1,27 @@
 ﻿using System;
-using System.Diagnostics.Tracing;
 
-namespace EasyPlugin.Events
+namespace EasyPlugin.Events.Attributes
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Delegate)]
-    public class EventListener : Attribute
+    public class PluginEventHandler : Attribute
     {
-        public EventListener(EPriority eventPriority = EPriority.Normal, bool ignoreCancelled = false,
-            bool removeWhenUsed = false)
+        public PluginEventHandler(EPriority eventPriority = EPriority.Normal, bool ignoreCancelled = false, bool removeWhenUsed = false)
         {
             Priority = eventPriority;
             IgnoreCancelled = ignoreCancelled;
             RemoveWhenUsed = removeWhenUsed;
         }
-        
+
         /// <summary>
         /// Event Priority.
         /// </summary>
         public EPriority Priority { get; }
-        
+
         /// <summary>
-        /// If set to true, this event will not be called if the event has been cancelled.
+        /// If set to true, this event will not be called if the event has been cancelled previously.
         /// </summary>
         public bool IgnoreCancelled { get; }
-        
+
         /// <summary>
         /// If set to true, this event will be unregistered after his first call.
         /// </summary>

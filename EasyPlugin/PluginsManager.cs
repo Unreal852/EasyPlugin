@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
-using EasyPlugin.EventArgs;
 using EasyPlugin.Events;
+using EasyPlugin.Events.Args;
+using EasyPlugin.Loader;
 using EasyPlugin.Plugin;
 using EasyPlugin.Plugin.Loader;
 
 namespace EasyPlugin
 {
-    
     public class PluginsManager : IPluginsManager
     {
         public PluginsManager()
         {
-
         }
 
         public ReadOnlyCollection<IPlugin> Plugins => ListPlugins.AsReadOnly();
-        
+
         public IEventsManager EventsManager { get; } = new EventsManager();
 
         private List<IPlugin> ListPlugins { get; } = new List<IPlugin>();
@@ -35,10 +34,22 @@ namespace EasyPlugin
             EventsManager.CallEvent(loadedEventArgs);
             return true;
         }
+        
+        public bool LoadPlugin<TPlugin>(FileInfo fileInfo, IPluginLoader<TPlugin> pluginLoader = null, params Type[] sharedTypes) where TPlugin : class, IPlugin
+        {
+            pluginLoader ??= new PluginLoader<TPlugin>(this);
+            TPlugin plugin = (pluginLoader as PluginLoader<TPlugin>)?.Load(fileInfo, sharedTypes);
+            if (plugin == null)
+                return false;
+            ListPlugins.Add(plugin);
+            PluginLoadedEventArgs loadedEventArgs = new PluginLoadedEventArgs(plugin);
+            EventsManager.CallEvent(loadedEventArgs);
+            return true;
+        }
 
         public Task<bool> LoadPluginAsync<TPlugin>(FileInfo fileInfo, IPluginLoader<TPlugin> pluginLoader = null) where TPlugin : class, IPlugin
         {
-           throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void UnloadPlugin(IPlugin plugin)

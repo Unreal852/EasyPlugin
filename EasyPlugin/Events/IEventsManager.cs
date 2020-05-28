@@ -4,6 +4,9 @@ using EasyPlugin.Plugin;
 
 namespace EasyPlugin.Events
 {
+    /// <summary>
+    /// Provide the base interface for managing events.
+    /// </summary>
     public interface IEventsManager
     {
         void RegisterEvents(IPlugin plugin, object instance);
@@ -14,6 +17,6 @@ namespace EasyPlugin.Events
 
         void UnregisterEvents(IPlugin plugin);
 
-        void CallEvent(System.EventArgs @event);
+        void CallEvent(EventArgs @event);
     }
 }

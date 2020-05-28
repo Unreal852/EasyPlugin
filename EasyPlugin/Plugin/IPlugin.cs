@@ -12,12 +12,6 @@
         public IPluginsManager PluginsManager { get; }
 
         /// <summary>
-        /// The plugin data folder.
-        /// This is a folder dedicated to this plugin.
-        /// </summary>
-        public string DataFolder { get; }
-
-        /// <summary>
         /// Called when this plugin is being enabled.
         /// </summary>
         public void OnEnable();

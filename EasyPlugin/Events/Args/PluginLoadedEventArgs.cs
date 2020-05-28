@@ -1,17 +1,17 @@
 ﻿using System;
 using EasyPlugin.Plugin;
 
-namespace EasyPlugin.EventArgs
+namespace EasyPlugin.Events.Args
 {
-    public class PluginUnloadedEventArgs : System.EventArgs
+    public class PluginLoadedEventArgs : EventArgs
     {
-        public PluginUnloadedEventArgs(IPlugin plugin)
+        public PluginLoadedEventArgs(IPlugin plugin)
         {
             Plugin = plugin;
         }
         
         /// <summary>
-        /// The plugin that has been unloaded
+        /// The plugin that has been loaded
         /// </summary>
         public IPlugin Plugin { get; }
     }

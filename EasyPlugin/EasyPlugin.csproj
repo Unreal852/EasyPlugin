@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <Nullable>disable</Nullable>
     </PropertyGroup>
 
@@ -10,16 +10,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="EasyLogger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\EasyLogger\EasyLogger\bin\Release\netcoreapp3.0\EasyLogger.dll</HintPath>
-      </Reference>
       <Reference Include="EasySharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\EasySharp\EasySharp\bin\Release\netcoreapp3.0\EasySharp.dll</HintPath>
+        <HintPath>..\..\EasySharp\EasySharp\bin\Release\netcoreapp3.1\EasySharp.dll</HintPath>
       </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Logger" />
     </ItemGroup>
 
 </Project>

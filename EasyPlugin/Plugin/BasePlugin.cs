@@ -4,15 +4,12 @@
     {
         protected BasePlugin()
         {
-            
         }
 
         public IPluginsManager PluginsManager { get; internal set; }
-        
-        public string DataFolder { get; internal set; }
-        
+
         public abstract void OnEnable();
-        
+
         public abstract void OnDisable();
     }
 }

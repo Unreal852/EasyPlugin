@@ -3,8 +3,8 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using EasyPlugin.Events;
+using EasyPlugin.Loader;
 using EasyPlugin.Plugin;
-using EasyPlugin.Plugin.Loader;
 
 namespace EasyPlugin
 {
@@ -14,7 +14,7 @@ namespace EasyPlugin
         /// Events Manager
         /// </summary>
         IEventsManager EventsManager { get; }
-        
+
         /// <summary>
         /// Loaded Plugins
         /// </summary>
@@ -34,7 +34,7 @@ namespace EasyPlugin
         /// <param name="fileInfo">The file to load</param>
         /// <param name="pluginLoader">The plugin loader</param>
         /// <returns>true if the file has been successfully loaded, false otherwise</returns>
-        Task<bool> LoadPluginAsync<TPlugin>(FileInfo fileInfo,IPluginLoader<TPlugin> pluginLoader = null) where TPlugin : class, IPlugin;
+        Task<bool> LoadPluginAsync<TPlugin>(FileInfo fileInfo, IPluginLoader<TPlugin> pluginLoader = null) where TPlugin : class, IPlugin;
 
         /// <summary>
         /// Unload the specified plugin.
